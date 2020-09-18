@@ -1,0 +1,6 @@
+server:
+  port: 8022
+
+remote:
+  api:
+    port: 8011

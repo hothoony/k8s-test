@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: git-test-app
+  labels:
+    app: git-test-app
+spec:
+  containers:
+    - name: git-test-app
+      image: hothoony/k8s-test:v3
