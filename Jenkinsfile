@@ -13,10 +13,6 @@ node {
         }
         stage('test') {
 //             echo "${BUILD_NUMBER}"
-//             sh('docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}')
-//             sh('ssh hothoony@192.168.219.86 kubectl run k8s-test --image=hothoony/k8s-test:v3')
-//             sh('scp pod-example.yaml hothoony@192.168.219.86:~')
-//             sh('ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml')
         }
         stage('build gradle') {
             sh(script: './gradlew clean build')
@@ -32,7 +28,10 @@ node {
 //             sh(script: 'docker push hothoony/k8s-test:v3')
 //         }
         stage('deploy') {
-
+//             sh('docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}')
+//             sh('ssh hothoony@192.168.219.86 kubectl run k8s-test --image=hothoony/k8s-test:v3')
+//             sh('scp pod-example.yaml hothoony@192.168.219.86:~')
+//             sh('ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml')
         }
     }
 }
