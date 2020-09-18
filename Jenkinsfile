@@ -12,13 +12,13 @@ node {
             git 'https://github.com/hothoony/k8s-test'
         }
         stage('test') {
-//             echo "${BUILD_NUMBER}"
+            echo "${BUILD_NUMBER}"
         }
         stage('build gradle') {
             sh(script: './gradlew clean build')
         }
         stage('build docker') {
-            sh(script: 'docker build -t k8s-test:v1 .')
+            sh(script: 'docker build -t hothoony/k8s-test:v1 .')
         }
         stage('tag') {
             sh(script: 'docker tag k8s-test:v1 hothoony/k8s-test:v3')
