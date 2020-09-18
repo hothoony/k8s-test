@@ -12,8 +12,8 @@ node {
 //             git 'https://github.com/hothoony/k8s-test'
 //         }
         stage('test') {
-//             echo "${BUILD_NUMBER}"
-            sh('docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}')
+            echo "${BUILD_NUMBER}"
+//             sh('docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}')
 //             sh('ssh hothoony@192.168.219.86 kubectl run k8s-test --image=hothoony/k8s-test:v3')
 //             sh('scp pod-example.yaml hothoony@192.168.219.86:~')
 //             sh('ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml')
