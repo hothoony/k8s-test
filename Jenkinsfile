@@ -3,10 +3,10 @@ properties([pipelineTriggers([githubPush()])])
 node {
     git url: 'https://github.com/hothoony/k8s-test', branch: 'master'
 
-//     withCredentials([[$class: 'UsernamePasswordMultiBinding',
-//         credentialsId: 'dockerhub',
-//         usernameVariable: 'DOCKER_UID',
-//         passwordVariable: 'DOCKER_PWD']]) {
+    withCredentials([[$class: 'UsernamePasswordMultiBinding',
+        credentialsId: 'dockerhub',
+        usernameVariable: 'DOCKER_UID',
+        passwordVariable: 'DOCKER_PWD']]) {
 
 //         stage('pull') {
 //             git 'https://github.com/hothoony/k8s-test'
@@ -34,7 +34,5 @@ node {
 //         stage('deploy') {
 //
 //         }
-//     }
+    }
 }
-
-
