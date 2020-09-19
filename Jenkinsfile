@@ -44,15 +44,9 @@ node {
     }
 }
 
-def getDockerTag(num) {
-//     def tag
-//     if (num == '1') {
-//         tag = sh script: 'git rev-parse HEAD', returnStdout: true
-//     } else if (nu == '2') {
-//         tag = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
-//     } else {
-//         tag = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
-//     }
+def getDockerTag() {
+//     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+//     def tag = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
     def tag = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
     return tag
 }
