@@ -46,3 +46,4 @@ def getDockerTag() {
     def tag = sh script: "git log -n 1 --pretty=%h", returnStdout: true
     return tag
 }
+
