@@ -52,5 +52,5 @@ def getDockerTag() {
     return tag
 }
 def aa(num) {
-    return 'return value is ${num}'
+    return 'return value is ' + ${num}
 }
