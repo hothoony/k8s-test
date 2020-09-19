@@ -10,6 +10,7 @@ node {
         usernameVariable: 'DOCKER_UID',
         passwordVariable: 'DOCKER_PWD']]) {
 
+
 //         stage('pull') {
 //             git 'https://github.com/hothoony/k8s-test'
 //         }
