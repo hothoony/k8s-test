@@ -17,3 +17,5 @@ spec:
       containers:
         - name: k8s-test
           image: hothoony/k8s-test:{TAG}
+          - ports:
+          containerPort: 8080
