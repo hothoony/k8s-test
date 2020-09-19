@@ -49,10 +49,10 @@ node {
 def getDockerTag(num) {
     if (num == '1') {
         return 'aa'
-//     } else (num == '2')
-//         return 'bb'
+    } else if (num == '2')
+        return 'bb'
     } else {
         return 'cc'
     }
-    return 'dd'
+//     return 'dd'
 }
