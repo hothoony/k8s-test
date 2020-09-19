@@ -51,6 +51,7 @@ def getDockerTag(num) {
     } else {
         return 'cc'
     }
+    return 'dd'
 //     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
 //     def tag = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
 //     def tag = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
