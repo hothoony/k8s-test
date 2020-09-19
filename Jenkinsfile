@@ -3,8 +3,8 @@ properties([pipelineTriggers([githubPush()])])
 node {
     git url: "https://github.com/hothoony/k8s-test", branch: "master"
 
-    def tag = "${BUILD_NUMBER}"
-//     def tag = getDockerTag()
+    def TAG = "${BUILD_NUMBER}"
+//     def TAG = getDockerTag()
 
     withCredentials([[$class: "UsernamePasswordMultiBinding",
         credentialsId: "dockerhub",
@@ -21,23 +21,23 @@ node {
             sh "./gradlew clean build"
         }
         stage("build docker") {
-            sh "docker build -t hothoony/k8s-test:${tag} ."
+            sh "docker build -t hothoony/k8s-test:${TAG} ."
         }
         stage("tag") {
-            sh "docker tag hothoony/k8s-test:${tag} hothoony/k8s-test:latest"
+            sh "docker tag hothoony/k8s-test:${TAG} hothoony/k8s-test:latest"
         }
         stage("push") {
             sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
-            sh "docker push hothoony/k8s-test:${tag}"
+            sh "docker push hothoony/k8s-test:${TAG}"
             sh "docker push hothoony/k8s-test:latest"
-            sh "docker rmi hothoony/k8s-test:${tag}"
+            sh "docker rmi hothoony/k8s-test:${TAG}"
             sh "docker rmi hothoony/k8s-test:latest"
         }
         stage("deploy") {
-//             sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
-            sh "scp deploy/pod-example.yaml hothoony@192.168.219.86:~"
-            sh "ssh hothoony@192.168.219.86 sed -i 's/{DOCKER_TAG}/${tag}/g' pod-example.yaml"
-            sh "ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml"
+            def K8S_CLUSTER = "hothoony@192.168.219.86"
+            sh "scp deploy/pod-example.yaml K8S_CLUSTER:~"
+            sh "ssh K8S_CLUSTER sed -i 's/{DOCKER_TAG}/${TAG}/g' pod-example.yaml"
+            sh "ssh K8S_CLUSTER kubectl apply -f pod-example.yaml"
         }
     }
 }
