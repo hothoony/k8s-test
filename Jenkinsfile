@@ -17,8 +17,8 @@ node {
         stage('test') {
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
-            echo "tag1: " + getDockerTag('1')
-            echo "tag2: " + getDockerTag('2')
+//             echo "tag1: " + getDockerTag('1')
+//             echo "tag2: " + getDockerTag('2')
 //             echo "tag: ${tag}"
         }
 //         stage('build gradle') {
@@ -46,14 +46,13 @@ node {
 //     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
 //     def tag = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
 //     def tag = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
-def getDockerTag(num) {
-    if (num == '1') {
-        return 'aa'
-    } else (num == '2')
-        return 'bb'
-    } else {
-        return 'cc'
-    }
-    return 'dd'
-}
-
+// def getDockerTag(num) {
+//     if (num == '1') {
+//         return 'aa'
+//     } else (num == '2')
+//         return 'bb'
+//     } else {
+//         return 'cc'
+//     }
+//     return 'dd'
+// }
