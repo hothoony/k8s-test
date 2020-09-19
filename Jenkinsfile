@@ -7,7 +7,7 @@ node {
     def tag = getDockerTag()
     def tag1 = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
     def tag2 = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
-    def bb = echo aa('123')
+    def bb = aa('123')
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
