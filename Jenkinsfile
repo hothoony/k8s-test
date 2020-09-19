@@ -4,9 +4,7 @@ node {
     git url: 'https://github.com/hothoony/k8s-test', branch: 'master'
 
     def buildNumber = "${BUILD_NUMBER}"
-    def tag1 = getDockerTag(1)
-    def tag2 = getDockerTag(2)
-    def tag3 = getDockerTag(3)
+    def tag = getDockerTag()
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
@@ -19,9 +17,9 @@ node {
         stage('test') {
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
-            echo "tag1: ${tag1}"
-            echo "tag2: ${tag2}"
-            echo "tag3: ${tag3}"
+            echo "tag1: " + getDockerTag(1)
+            echo "tag2: " + getDockerTag(2)
+            echo "tag: ${tag}"
         }
 //         stage('build gradle') {
 //             sh(script: './gradlew clean build')
