@@ -15,15 +15,13 @@ node {
             git "https://github.com/hothoony/k8s-test"
         }
         stage("test") {
-            echo "test"
+            sh "./gradlew test"
         }
         stage("build gradle") {
             sh "./gradlew clean build"
         }
         stage("build docker") {
             sh "docker build -t hothoony/k8s-test:${TAG} ."
-        }
-        stage("tag") {
             sh "docker tag hothoony/k8s-test:${TAG} hothoony/k8s-test:latest"
         }
         stage("push") {
