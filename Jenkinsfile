@@ -22,7 +22,7 @@ node {
 //         }
         stage('build docker') {
 //             sh(script: 'docker build -t hothoony/k8s-test:${tag} .')
-            sh('docker build -t hothoony/k8s-test:${tag} .')
+            sh("docker build -t hothoony/k8s-test:${tag} .")
         }
 //         stage('tag') {
 //             sh(script: 'docker tag hothoony/k8s-test:${tag} hothoony/k8s-test:latest')
