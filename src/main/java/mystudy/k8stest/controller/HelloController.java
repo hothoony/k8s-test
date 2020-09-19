@@ -29,7 +29,7 @@ public class HelloController {
     public String hello() {
         String msg = "hello, " + request.getLocalAddr();
         System.out.println(msg);
-        return "hello";
+        return msg;
     }
 
     @GetMapping("/send")
@@ -38,7 +38,7 @@ public class HelloController {
         String uri = host + ":" + port + "/recv?msg=" + msg;
         String result = restTemplate.getForObject(uri, String.class);
 //        System.out.println(result);
-        return "send";
+        return "send: " + uri;
     }
 
     @GetMapping("/recv")

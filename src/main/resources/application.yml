@@ -1,6 +1,6 @@
 server:
-  port: 8022
+  port: 8080
 
 remote:
   api:
-    port: 8011
+    port: 8082
