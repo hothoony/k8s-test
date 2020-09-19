@@ -4,7 +4,7 @@ node {
     git url: 'https://github.com/hothoony/k8s-test', branch: 'master'
 
     def buildNumber = "${BUILD_NUMBER}"
-    def tag = getDockerTag('3')
+//     def tag = getDockerTag('3')
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
