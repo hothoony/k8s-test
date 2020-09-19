@@ -33,9 +33,10 @@ node {
         }
         stage("deploy") {
             def K8S_CLUSTER = "hothoony@192.168.219.86"
-            sh "scp deploy/pod-example.yaml ${K8S_CLUSTER}:~"
-            sh "ssh ${K8S_CLUSTER} sed -i 's/{DOCKER_TAG}/${TAG}/g' pod-example.yaml"
-            sh "ssh ${K8S_CLUSTER} kubectl apply -f pod-example.yaml"
+            sh "ssh ${K8S_CLUSTER} rm -rf ~/deploy/"
+            sh "scp -r deploy/ ${K8S_CLUSTER}:~"
+            sh "ssh ${K8S_CLUSTER} sed -i 's/{DOCKER_TAG}/${TAG}/g' deploy/pod-example.yaml"
+            sh "ssh ${K8S_CLUSTER} kubectl apply -f deploy/pod-example.yaml"
         }
     }
 }
