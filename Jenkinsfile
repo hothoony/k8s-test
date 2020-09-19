@@ -15,7 +15,7 @@ node {
             git "https://github.com/hothoony/k8s-test"
         }
         stage("test") {
-            echo "test"
+            echo("test")
         }
         stage("build gradle") {
             sh("./gradlew clean build")
