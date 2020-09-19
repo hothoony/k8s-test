@@ -27,7 +27,7 @@ node {
             sh "docker tag hothoony/k8s-test:${tag} hothoony/k8s-test:latest"
         }
         stage("push") {
-//             sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
+            sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
             sh "docker push hothoony/k8s-test:${tag}"
             sh "docker push hothoony/k8s-test:latest"
             sh "docker rmi hothoony/k8s-test:${tag}"
