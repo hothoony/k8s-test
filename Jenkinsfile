@@ -7,7 +7,9 @@ node {
     def tag = getDockerTag()
     def tag1 = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
     def tag2 = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
-    def bb = aa('123')
+    def bb = aa('1')
+    def bb2 = aa('2')
+    def bb3 = aa('3')
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
@@ -19,6 +21,8 @@ node {
 //         }
         stage('test') {
             echo "bb : ${bb}"
+            echo "bb2 : ${bb2}"
+            echo "bb3 : ${bb3}"
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
             echo "tag: ${tag}"
@@ -52,5 +56,11 @@ def getDockerTag() {
     return tag
 }
 def aa(num) {
-    return 'return value is ' + num
+    if (num == '1') {
+        return 'retVal 11'
+    } else if (num == '2') {
+        return 'retVal 22'
+    } else {
+        return 'return value is ' + num
+    }
 }
