@@ -3,7 +3,7 @@ properties([pipelineTriggers([githubPush()])])
 node {
     git url: 'https://github.com/hothoony/k8s-test', branch: 'master'
 
-    def buildNumber = ${BUILD_NUMBER}
+    def buildNumber = "${BUILD_NUMBER}"
     def tag = getDockerTag()
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
