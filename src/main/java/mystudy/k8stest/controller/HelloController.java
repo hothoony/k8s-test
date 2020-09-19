@@ -27,7 +27,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        String msg = "v3 hello k8s-test, " + request.getLocalAddr();
+        String msg = "hello, " + request.getLocalAddr();
         System.out.println(msg);
         return "hello";
     }
