@@ -29,7 +29,7 @@ public class HelloController {
     public String hello() {
         String msg = "hello, " + request.getLocalAddr();
         System.out.println(msg);
-        return msg;
+        return msg + "\n";
     }
 
     @GetMapping("/send")
