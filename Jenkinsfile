@@ -17,8 +17,8 @@ node {
         stage('test') {
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
-            echo "tag1: " + getDockerTag(1)
-            echo "tag2: " + getDockerTag(2)
+            echo "tag1: " + getDockerTag('1')
+            echo "tag2: " + getDockerTag('2')
             echo "tag: ${tag}"
         }
 //         stage('build gradle') {
