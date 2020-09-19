@@ -7,4 +7,4 @@ metadata:
 spec:
   containers:
     - name: git-test-app
-      image: hothoony/k8s-test:{DOCKER_TAG}
+      image: hothoony/k8s-test:{TAG}
