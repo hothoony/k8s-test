@@ -7,6 +7,7 @@ node {
     def tag = getDockerTag()
     def tag1 = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
     def tag2 = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
+    def bb = echo aa('123')
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
@@ -17,6 +18,7 @@ node {
 //             git 'https://github.com/hothoony/k8s-test'
 //         }
         stage('test') {
+            echo "bb : ${bb}"
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
             echo "tag: ${tag}"
@@ -46,7 +48,9 @@ node {
 }
 
 def getDockerTag() {
-//     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag
+}
+def aa(num) {
+    return 'return value is ${num}'
 }
