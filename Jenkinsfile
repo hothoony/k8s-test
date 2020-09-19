@@ -18,26 +18,26 @@ node {
             echo "test"
         }
         stage("build gradle") {
-            sh "./gradlew clean build"
+            sh("./gradlew clean build")
         }
         stage("build docker") {
-            sh "docker build -t hothoony/k8s-test:${tag} ."
+            sh("docker build -t hothoony/k8s-test:${tag} .")
         }
         stage("tag") {
-            sh "docker tag hothoony/k8s-test:${tag} hothoony/k8s-test:latest"
+            sh("docker tag hothoony/k8s-test:${tag} hothoony/k8s-test:latest")
         }
         stage("push") {
-            sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
-            sh "docker push hothoony/k8s-test:${tag}"
-            sh "docker push hothoony/k8s-test:latest"
-            sh "docker rmi hothoony/k8s-test:${tag}"
-            sh "docker rmi hothoony/k8s-test:latest"
+            sh("docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}")
+            sh("docker push hothoony/k8s-test:${tag}")
+            sh("docker push hothoony/k8s-test:latest")
+            sh("docker rmi hothoony/k8s-test:${tag}")
+            sh("docker rmi hothoony/k8s-test:latest")
         }
         stage("deploy") {
-//             sh "docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}"
-            sh "scp pod-example.yaml hothoony@192.168.219.86:~"
-            sh "ssh hothoony@192.168.219.86 sed -i 's/{DOCKER_TAG}/${tag}/g' pod-example.yaml"
-            sh "ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml"
+//             sh("docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}")
+            sh("scp pod-example.yaml hothoony@192.168.219.86:~")
+            sh("ssh hothoony@192.168.219.86 sed -i 's/{DOCKER_TAG}/${tag}/g' pod-example.yaml")
+            sh("ssh hothoony@192.168.219.86 kubectl apply -f pod-example.yaml")
         }
     }
 }
