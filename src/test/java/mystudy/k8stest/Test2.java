@@ -7,6 +7,6 @@ public class Test2 {
     @Test
     void test() {
         System.out.println("test2");
-//        throw new RuntimeException();
+        throw new RuntimeException();
     }
 }
