@@ -21,7 +21,7 @@ node {
             sh(script: 'docker build -t hothoony/k8s-test:v1 .')
         }
         stage('tag') {
-            sh(script: 'docker tag k8s-test:v1 hothoony/k8s-test:v3')
+            sh(script: 'docker tag hothoony/k8s-test:v1 hothoony/k8s-test:v3')
         }
 //         stage('push') {
 //             sh(script: 'docker login -u ${DOCKER_UID} -p ${DOCKER_PWD}')
@@ -35,3 +35,4 @@ node {
         }
     }
 }
+
