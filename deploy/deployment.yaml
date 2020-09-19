@@ -8,12 +8,12 @@ spec:
     matchLabels:
       app: k8s-test
       tier: backend
-    template:
-      metadata:
-        labels:
-          app: k8s-test
-          tier: backend
-      spec:
-        containers:
-          - name: k8s-test
-            image: hothoony/k8s-test:{TAG}
+  template:
+    metadata:
+      labels:
+        app: k8s-test
+        tier: backend
+    spec:
+      containers:
+        - name: k8s-test
+          image: hothoony/k8s-test:{TAG}
