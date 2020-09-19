@@ -1,4 +1,4 @@
-properties([pipelineTriggers([githubPush])])])
+properties([pipelineTriggers([githubPush])])
 
 node {
     git url: "https://github.com/hothoony/k8s-test", branch: "master"
