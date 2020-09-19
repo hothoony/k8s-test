@@ -4,12 +4,9 @@ node {
     git url: 'https://github.com/hothoony/k8s-test', branch: 'master'
 
     def buildNumber = "${BUILD_NUMBER}"
-    def tag = getDockerTag()
-    def tag1 = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
-    def tag2 = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
-    def bb = aa('1')
-    def bb2 = aa('2')
-    def bb3 = aa('3')
+    def tag1 = getDockerTag(1)
+    def tag2 = getDockerTag(2)
+    def tag3 = getDockerTag(3)
 
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
         credentialsId: 'dockerhub',
@@ -20,14 +17,11 @@ node {
 //             git 'https://github.com/hothoony/k8s-test'
 //         }
         stage('test') {
-            echo "bb : ${bb}"
-            echo "bb2 : ${bb2}"
-            echo "bb3 : ${bb3}"
             echo "buildNumber : ${buildNumber}"
             echo "BUILD_NUMBER : ${BUILD_NUMBER}"
-            echo "tag: ${tag}"
             echo "tag1: ${tag1}"
             echo "tag2: ${tag2}"
+            echo "tag3: ${tag3}"
         }
 //         stage('build gradle') {
 //             sh(script: './gradlew clean build')
@@ -51,16 +45,13 @@ node {
     }
 }
 
-def getDockerTag() {
-    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
-    return tag
-}
-def aa(num) {
+def getDockerTag(num) {
     if (num == '1') {
-        return 'retVal 11'
-    } else if (num == '2') {
-        return 'retVal 22'
+        def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+    } else if (nu == '2') {
+        def tag = sh script: 'git log -n 1 --pretty=%H', returnStdout: true
     } else {
-        return 'return value is ' + num
+        def tag = sh script: 'git log -n 1 --pretty=%h', returnStdout: true
     }
+    return tag
 }
