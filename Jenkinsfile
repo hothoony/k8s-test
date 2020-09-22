@@ -32,7 +32,7 @@ node {
             sh "docker rmi hothoony/k8s-test:latest"
         }
         stage("deploy k8s") {
-            def K8S_CLUSTER = "hothoony@192.168.219.86"
+            def K8S_CLUSTER = "hothoony@192.168.219.81"
             sh "ssh ${K8S_CLUSTER} rm -rf deploy/"
             sh "scp -r deploy/ ${K8S_CLUSTER}:~"
             sh "ssh ${K8S_CLUSTER} sed -i 's/{TAG}/${TAG}/g' deploy/deployment.yaml"
