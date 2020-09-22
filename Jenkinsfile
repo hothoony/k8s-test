@@ -12,12 +12,15 @@ node {
         passwordVariable: "DOCKER_PWD"]]) {
 
         stage("pull") {
+            slackSend channel: '#jenkins', color: '#FFFF00', message: "STARTED: pull"
             git "https://github.com/hothoony/k8s-test"
         }
         stage("test") {
+            slackSend channel: '#jenkins', color: '#FFFF00', message: "STARTED: test"
             sh "./gradlew test"
         }
         stage("build gradle") {
+            slackSend channel: '#jenkins', color: '#FFFF00', message: "STARTED: build gradle"
             sh "./gradlew clean build"
         }
         stage("build docker") {
